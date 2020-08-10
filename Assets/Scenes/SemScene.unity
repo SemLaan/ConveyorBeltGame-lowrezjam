@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 626865100}
   - component: {fileID: 626865099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: beefy player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
