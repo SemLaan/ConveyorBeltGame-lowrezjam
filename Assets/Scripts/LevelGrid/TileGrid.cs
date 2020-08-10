@@ -25,6 +25,9 @@ public class TileGrid : MonoBehaviour
 
     [SerializeField] private Vector2Int levelSize;
 
+    [Header("Tile collision detection")]
+    [SerializeField] private Transform player = null;
+
     [Header("Tile object prefabs")]
     [SerializeField] private GameObject empty = null;
     [SerializeField] private GameObject wall = null,
@@ -32,11 +35,20 @@ public class TileGrid : MonoBehaviour
                                         conveyorTurnLeft = null, conveyorTurnRight = null;
 
     private Dictionary<TileType, GameObject> tileDict = null;
+    private List<Transform> tiles = new List<Transform>();
     
 
 
     private void Awake()
     {
+
+
+        // TEMPORARY test
+        tilegrid[1, 1] = TileType.conveyorUp;
+        tilegrid[1, 2] = TileType.conveyorUp;
+        tilegrid[2, 1] = TileType.conveyorUp;
+        tilegrid[2, 2] = TileType.conveyorUp;
+
 
         tileDict = new Dictionary<TileType, GameObject>()
         {
@@ -56,7 +68,32 @@ public class TileGrid : MonoBehaviour
             {
 
                 GameObject tile = tileDict[tilegrid[x, y]];
-                Instantiate(tile, new Vector3(x + 1, y + 1, 0), Quaternion.identity, transform);
+                GameObject instantiatedTile = Instantiate(tile, new Vector3(x + 1, y + 1, 0), Quaternion.identity, transform);
+                tiles.Add(instantiatedTile.transform);
             }
+    }
+
+
+
+    private void FixedUpdate()
+    {
+
+        float closestTileDistance = float.PositiveInfinity;
+        Transform closestTile = null;
+
+        foreach (Transform tile in tiles)
+        {
+
+            float distance = Vector2.Distance(tile.position, player.position);
+            if (distance < closestTileDistance)
+            {
+
+                closestTileDistance = distance;
+                closestTile = tile;
+            }
+        }
+
+        BaseTile collisionTile = closestTile.GetComponent<BaseTile>();
+        collisionTile.TileAction(0, player, Time.fixedDeltaTime);
     }
 }
