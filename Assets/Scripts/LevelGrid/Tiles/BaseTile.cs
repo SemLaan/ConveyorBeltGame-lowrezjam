@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseTile : MonoBehaviour
 {
     
-    public void TileAction(int fixedUpdateCount, Transform player) 
+    public abstract void TileAction(int fixedUpdateCount, Transform player, float downtime) 
     {
         
     }
