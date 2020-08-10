@@ -25,7 +25,7 @@ public class TileGrid : MonoBehaviour
 
     [SerializeField] private Vector2Int levelSize;
 
-    [Header("Tile objects")]
+    [Header("Tile object prefabs")]
     [SerializeField] private GameObject empty = null;
     [SerializeField] private GameObject wall = null,
                                         conveyorLeft = null, conveyorRight = null, conveyorUp = null, conveyorDown = null,
@@ -49,5 +49,14 @@ public class TileGrid : MonoBehaviour
             {TileType.conveyorTurnLeft, conveyorTurnLeft},
             {TileType.conveyorTurnRight, conveyorTurnRight},
         };
+
+        // initializing the tiles
+        for (int x = 0; x < levelSize.x; x++)
+            for (int y = 0; y < levelSize.y; y++)
+            {
+
+                GameObject tile = tileDict[tilegrid[x, y]];
+                Instantiate(tile, new Vector3(x + 1, y + 1, 0), Quaternion.identity, transform);
+            }
     }
 }
