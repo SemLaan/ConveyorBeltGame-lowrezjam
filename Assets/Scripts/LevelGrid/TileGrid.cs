@@ -42,6 +42,14 @@ public class TileGrid : MonoBehaviour
     private void Awake()
     {
 
+
+        // TEMPORARY test
+        tilegrid[1, 1] = TileType.conveyorUp;
+        tilegrid[1, 2] = TileType.conveyorUp;
+        tilegrid[2, 1] = TileType.conveyorUp;
+        tilegrid[2, 2] = TileType.conveyorUp;
+
+
         tileDict = new Dictionary<TileType, GameObject>()
         {
             {TileType.empty, empty},

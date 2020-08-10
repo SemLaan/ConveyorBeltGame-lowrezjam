@@ -283,7 +283,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: f6529d8944119d040b9b4246bb45662c, type: 3}
   m_Color: {r: 0.17421682, g: 0.8207547, b: 0.20007677, a: 1}
   m_FlipX: 0
@@ -354,11 +354,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileBrush: 0
   levelSize: {x: 15, y: 15}
+  player: {fileID: 626865100}
   empty: {fileID: 3308288497166297515, guid: 8736a295214831d4e88e26e346495885, type: 3}
   wall: {fileID: 0}
   conveyorLeft: {fileID: 0}
   conveyorRight: {fileID: 0}
-  conveyorUp: {fileID: 0}
+  conveyorUp: {fileID: 287117809344956389, guid: bee8de6fc767e324c93ff583f3de66a8, type: 3}
   conveyorDown: {fileID: 0}
   conveyorTurnLeft: {fileID: 0}
   conveyorTurnRight: {fileID: 0}
