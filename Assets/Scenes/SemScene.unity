@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 8, y: 8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 626865100}
   - component: {fileID: 626865099}
   m_Layer: 0
-  m_Name: Square
+  m_Name: beefy player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f6529d8944119d040b9b4246bb45662c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.17421682, g: 0.8207547, b: 0.20007677, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileBrush: 0
   levelSize: {x: 15, y: 15}
-  empty: {fileID: 0}
+  empty: {fileID: 3308288497166297515, guid: 8736a295214831d4e88e26e346495885, type: 3}
   wall: {fileID: 0}
   conveyorLeft: {fileID: 0}
   conveyorRight: {fileID: 0}
