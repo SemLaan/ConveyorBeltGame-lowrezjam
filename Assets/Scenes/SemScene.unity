@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55b003c9ff4d84488941fddd4ad7968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 1, z: 0}
+  direction: {x: 0, y: 1}
   speed: 1
 --- !u!1 &1003932497
 GameObject:
@@ -371,7 +371,7 @@ MonoBehaviour:
   levelSize: {x: 15, y: 15}
   player: {fileID: 626865100}
   empty: {fileID: 3308288497166297515, guid: 8736a295214831d4e88e26e346495885, type: 3}
-  wall: {fileID: 0}
+  wall: {fileID: 5463697593795458880, guid: 8f7ceb2825e19bf4a8c2e7c41ab3d36b, type: 3}
   conveyorLeft: {fileID: 4291653111879614103, guid: 9b345e219b672c541b04e2f042ef2538, type: 3}
   conveyorRight: {fileID: 3444377316982376964, guid: 40b101c7a9f02994f8bb1fc90f00374c, type: 3}
   conveyorUp: {fileID: 287117809344956389, guid: bee8de6fc767e324c93ff583f3de66a8, type: 3}

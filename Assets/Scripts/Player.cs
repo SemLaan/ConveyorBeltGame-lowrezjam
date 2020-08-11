@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public Vector3 direction;
-    [SerializeField] public int speed;
 
-    void Update()
+    [SerializeField] public Vector2 direction;
+    [SerializeField] public float speed;
+
+
+    private void FixedUpdate()
     {
-        transform.position += direction * speed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space))
-        {
-            speed = 0;
-        }
+
+        transform.position += (Vector3)direction * speed * Time.deltaTime;
     }
 }
