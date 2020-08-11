@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9000f5b55ac5727439d17b9830fc1964
+=======
+guid: 0cbe2dc72c53b1f40823cdf17fa3eb42
+>>>>>>> Player
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
