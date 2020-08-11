@@ -45,9 +45,9 @@ public class TileGrid : MonoBehaviour
 
         // TEMPORARY test
         tilegrid[1, 1] = TileType.conveyorUp;
-        tilegrid[1, 2] = TileType.conveyorUp;
-        tilegrid[2, 1] = TileType.conveyorUp;
-        tilegrid[2, 2] = TileType.conveyorUp;
+        tilegrid[1, 2] = TileType.conveyorDown;
+        tilegrid[2, 1] = TileType.conveyorRight;
+        tilegrid[2, 2] = TileType.conveyorLeft;
 
 
         tileDict = new Dictionary<TileType, GameObject>()

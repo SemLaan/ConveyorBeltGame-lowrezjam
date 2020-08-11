@@ -357,9 +357,9 @@ MonoBehaviour:
   player: {fileID: 626865100}
   empty: {fileID: 3308288497166297515, guid: 8736a295214831d4e88e26e346495885, type: 3}
   wall: {fileID: 0}
-  conveyorLeft: {fileID: 0}
-  conveyorRight: {fileID: 0}
+  conveyorLeft: {fileID: 4291653111879614103, guid: 9b345e219b672c541b04e2f042ef2538, type: 3}
+  conveyorRight: {fileID: 3444377316982376964, guid: 40b101c7a9f02994f8bb1fc90f00374c, type: 3}
   conveyorUp: {fileID: 287117809344956389, guid: bee8de6fc767e324c93ff583f3de66a8, type: 3}
-  conveyorDown: {fileID: 0}
+  conveyorDown: {fileID: 7148955373458619547, guid: 8714bf996d83ee647884dc815b84133c, type: 3}
   conveyorTurnLeft: {fileID: 0}
   conveyorTurnRight: {fileID: 0}
