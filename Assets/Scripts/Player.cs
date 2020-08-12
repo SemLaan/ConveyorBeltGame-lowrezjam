@@ -13,7 +13,43 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        transform.position += (Vector3)direction * speed * Time.deltaTime;
+        Move(direction * speed * Time.deltaTime);
+    }
+
+
+    public void Move(Vector2 velocity)
+    {
+        
+        if (velocity.x > 0)
+        {
+
+            float collisionDistance = CollisionCheck(Vector3.right);
+            if (collisionDistance < velocity.x)
+                velocity.x = collisionDistance;
+        } else if (velocity.x < 0)
+        {
+
+            float collisionDistance = CollisionCheck(Vector3.left);
+            if (collisionDistance < -velocity.x)
+                velocity.x = -collisionDistance;
+        }
+
+        if (velocity.y > 0)
+        {
+
+            float collisionDistance = CollisionCheck(Vector3.up);
+            print(collisionDistance);
+            if (collisionDistance < velocity.y)
+                velocity.y = collisionDistance;
+        } else if (velocity.y < 0)
+        {
+
+            float collisionDistance = CollisionCheck(Vector3.down);
+            if (collisionDistance < -velocity.y)
+                velocity.y = -collisionDistance;
+        }
+
+        transform.position = transform.position + (Vector3) velocity;
     }
 
 
@@ -36,8 +72,8 @@ public class Player : MonoBehaviour
             rayOrigin2 = sideOfPlayer + Vector3.down * halfSize;
         }
 
-        RaycastHit2D ray1 = Physics2D.Raycast(rayOrigin1, direction, 2, 0 >> 8);
-        RaycastHit2D ray2 = Physics2D.Raycast(rayOrigin2, direction, 2, 0 >> 8);
+        RaycastHit2D ray1 = Physics2D.Raycast(rayOrigin1, direction, 2, LayerMask.GetMask("Wall"));
+        RaycastHit2D ray2 = Physics2D.Raycast(rayOrigin2, direction, 2, LayerMask.GetMask("Wall"));
 
         if (ray1.collider != null && ray2.collider != null)
         {
