@@ -10,9 +10,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
+        /*
         if (Input.GetKey(KeyCode.Space))
         {
             speed = 0;
         }
+        */
     }
 }
