@@ -26,7 +26,7 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private Vector2Int levelSize;
 
     [Header("Tile collision detection")]
-    [SerializeField] private Transform player = null;
+    [SerializeField] private Player player = null;
 
     [Header("Tile object prefabs")]
     [SerializeField] private GameObject empty = null;
@@ -49,6 +49,8 @@ public class TileGrid : MonoBehaviour
         tilegrid[2, 1] = TileType.conveyorRight;
         tilegrid[2, 2] = TileType.conveyorLeft;
         tilegrid[8, 8] = TileType.wall;
+        tilegrid[8, 7] = TileType.conveyorRight;
+        tilegrid[9, 7] = TileType.wall;
 
 
         tileDict = new Dictionary<TileType, GameObject>()
@@ -85,7 +87,7 @@ public class TileGrid : MonoBehaviour
         foreach (Transform tile in tiles)
         {
 
-            float distance = Vector2.Distance(tile.position, player.position);
+            float distance = Vector2.Distance(tile.position, player.transform.position);
             if (distance < closestTileDistance)
             {
 

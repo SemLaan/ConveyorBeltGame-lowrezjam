@@ -63,13 +63,13 @@ public class Player : MonoBehaviour
         if (direction.x == 0)
         {
 
-            rayOrigin1 = sideOfPlayer + Vector3.right * halfSize;
-            rayOrigin2 = sideOfPlayer + Vector3.left * halfSize;
+            rayOrigin1 = sideOfPlayer + Vector3.right * (halfSize - 0.01f);
+            rayOrigin2 = sideOfPlayer + Vector3.left * (halfSize - 0.01f);
         } else // if direction.y == 0
         {
 
-            rayOrigin1 = sideOfPlayer + Vector3.up * halfSize;
-            rayOrigin2 = sideOfPlayer + Vector3.down * halfSize;
+            rayOrigin1 = sideOfPlayer + Vector3.up * (halfSize - 0.01f);
+            rayOrigin2 = sideOfPlayer + Vector3.down * (halfSize - 0.01f);
         }
 
         RaycastHit2D ray1 = Physics2D.Raycast(rayOrigin1, direction, 2, LayerMask.GetMask("Wall"));

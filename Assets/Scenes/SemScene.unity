@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileBrush: 0
   levelSize: {x: 15, y: 15}
-  player: {fileID: 626865100}
+  player: {fileID: 626865101}
   empty: {fileID: 3308288497166297515, guid: 8736a295214831d4e88e26e346495885, type: 3}
   wall: {fileID: 5463697593795458880, guid: 8f7ceb2825e19bf4a8c2e7c41ab3d36b, type: 3}
   conveyorLeft: {fileID: 4291653111879614103, guid: 9b345e219b672c541b04e2f042ef2538, type: 3}
