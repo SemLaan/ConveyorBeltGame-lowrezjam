@@ -23,7 +23,7 @@ public class TileGrid : MonoBehaviour
     [HideInInspector] public TileGridArray tilegrid = new TileGridArray(15, 15);
     [SerializeField] public TileType tileBrush = TileType.empty;
 
-    [SerializeField] private Vector2Int levelSize;
+    public Vector2Int levelSize;
 
     [Header("Tile collision detection")]
     [SerializeField] private Player player = null;
@@ -41,17 +41,6 @@ public class TileGrid : MonoBehaviour
 
     private void Awake()
     {
-
-
-        // TEMPORARY test
-        tilegrid[1, 1] = TileType.conveyorUp;
-        tilegrid[1, 2] = TileType.conveyorDown;
-        tilegrid[2, 1] = TileType.conveyorRight;
-        tilegrid[2, 2] = TileType.conveyorLeft;
-        tilegrid[8, 8] = TileType.wall;
-        tilegrid[8, 7] = TileType.conveyorRight;
-        tilegrid[9, 7] = TileType.wall;
-
 
         tileDict = new Dictionary<TileType, GameObject>()
         {
