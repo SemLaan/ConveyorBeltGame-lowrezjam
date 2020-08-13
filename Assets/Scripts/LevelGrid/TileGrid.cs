@@ -34,6 +34,8 @@ public class TileGrid : MonoBehaviour
                                         conveyorLeft = null, conveyorRight = null, conveyorUp = null, conveyorDown = null,
                                         conveyorTurnLeft = null, conveyorTurnRight = null;
 
+    [HideInInspector] public bool pauseConveyorbelt;
+
     private Dictionary<TileType, GameObject> tileDict = null;
     private List<Transform> tiles = new List<Transform>();
     
@@ -81,22 +83,30 @@ public class TileGrid : MonoBehaviour
     private void FixedUpdate()
     {
 
-        float closestTileDistance = float.PositiveInfinity;
-        Transform closestTile = null;
-
-        foreach (Transform tile in tiles)
+        if(pauseConveyorbelt == true)
         {
+            float closestTileDistance = float.PositiveInfinity;
+            Transform closestTile = null;
 
+<<<<<<< HEAD
             float distance = Vector2.Distance(tile.position, player.transform.position);
             if (distance < closestTileDistance)
+=======
+            foreach (Transform tile in tiles)
+>>>>>>> feature/ConveyorbeltStop
             {
 
-                closestTileDistance = distance;
-                closestTile = tile;
-            }
-        }
+                float distance = Vector2.Distance(tile.position, player.position);
+                if (distance < closestTileDistance)
+                {
 
-        BaseTile collisionTile = closestTile.GetComponent<BaseTile>();
-        collisionTile.TileAction(0, player, Time.fixedDeltaTime);
+                    closestTileDistance = distance;
+                    closestTile = tile;
+                }
+            }
+
+            BaseTile collisionTile = closestTile.GetComponent<BaseTile>();
+            collisionTile.TileAction(0, player, Time.fixedDeltaTime);
+        }
     }
 }

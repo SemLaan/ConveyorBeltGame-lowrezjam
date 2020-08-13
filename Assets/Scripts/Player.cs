@@ -55,12 +55,18 @@ public class Player : MonoBehaviour
 
     private float CollisionCheck(Vector3 direction)
     {
+<<<<<<< HEAD
 
         Vector3 sideOfPlayer = transform.position + (direction * halfSize);
 
         Vector3 rayOrigin1, rayOrigin2;
 
         if (direction.x == 0)
+=======
+        transform.position += direction * speed * Time.deltaTime;
+        /*
+        if (Input.GetKey(KeyCode.Space))
+>>>>>>> feature/ConveyorbeltStop
         {
 
             rayOrigin1 = sideOfPlayer + Vector3.right * (halfSize - 0.01f);
@@ -71,6 +77,7 @@ public class Player : MonoBehaviour
             rayOrigin1 = sideOfPlayer + Vector3.up * (halfSize - 0.01f);
             rayOrigin2 = sideOfPlayer + Vector3.down * (halfSize - 0.01f);
         }
+<<<<<<< HEAD
 
         RaycastHit2D ray1 = Physics2D.Raycast(rayOrigin1, direction, 2, LayerMask.GetMask("Wall"));
         RaycastHit2D ray2 = Physics2D.Raycast(rayOrigin2, direction, 2, LayerMask.GetMask("Wall"));
@@ -105,5 +112,8 @@ public class Player : MonoBehaviour
 
         Vector3 sideOfPlayer = transform.position + (Vector3.right * (halfSize + 0.25f));
         Gizmos.DrawLine(sideOfPlayer + Vector3.up * halfSize, sideOfPlayer + Vector3.down * halfSize);
+=======
+        */
+>>>>>>> feature/ConveyorbeltStop
     }
 }

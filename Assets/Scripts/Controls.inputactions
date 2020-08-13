@@ -1,0 +1,33 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "b1d7e8a2-e77c-49be-a4fc-f806431e89ca",
+            "actions": [
+                {
+                    "name": "ConveyorControl",
+                    "type": "Value",
+                    "id": "4204cb42-2800-4a11-adc9-e08434940e4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "73216653-c4c8-4012-abeb-574bbd026925",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConveyorControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
