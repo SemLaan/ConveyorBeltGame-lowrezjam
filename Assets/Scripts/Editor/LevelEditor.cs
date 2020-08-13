@@ -80,6 +80,8 @@ public class LevelEditor : Editor
 
                 if (tileGrid.tilegrid[x, y] == TileType.empty)
                     Handles.DrawSolidRectangleWithOutline(verts, Color.grey, Color.grey);
+                else if (tileGrid.tilegrid[x, y] == TileType.wall)
+                    Handles.DrawSolidRectangleWithOutline(verts, Color.yellow, Color.yellow);
             }
 
         needsRepaint = false;
