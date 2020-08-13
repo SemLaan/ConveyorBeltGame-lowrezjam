@@ -9,7 +9,7 @@ public class LevelEditor : Editor
 {
 
     TileGrid tileGrid;
-
+    private bool mouseDown = false;
 
     private void OnEnable()
     {
@@ -29,18 +29,24 @@ public class LevelEditor : Editor
         Vector3 mousePosition = mouseRay.GetPoint(dstToDrawPlane);
 
         if (guiEvent.type == EventType.MouseDown && guiEvent.button == 0)
+            mouseDown = true;
+        else if (guiEvent.type == EventType.MouseUp && guiEvent.button == 0)
+            mouseDown = false;
+
+        if (mouseDown)
         {
 
             int x = Mathf.RoundToInt(mousePosition.x);
             int y = Mathf.RoundToInt(mousePosition.y);
 
-            Debug.Log(x + " : " + y);
+            if (tileGrid.tilegrid[x, y] != tileGrid.tileBrush)
+            {
 
-            Undo.RecordObject(tileGrid, "Change tile");
-            tileGrid.tilegrid[x, y] = tileGrid.tileBrush;
-
-            Debug.Log(tileGrid.tilegrid[0, 0]);
+                Undo.RecordObject(tileGrid, "Change tile");
+                tileGrid.tilegrid[x, y] = tileGrid.tileBrush;
+            }
         }
+        
 
         if (guiEvent.type == EventType.Layout)
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
