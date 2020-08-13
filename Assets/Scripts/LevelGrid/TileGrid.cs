@@ -20,8 +20,8 @@ public enum TileType
 public class TileGrid : MonoBehaviour
 {
 
-    [SerializeField] private TileType[,] tilegrid = new TileType[15, 15];
-    [SerializeField] private TileType tileBrush = TileType.empty;
+    [HideInInspector] public TileGridArray tilegrid = new TileGridArray(15, 15);
+    [SerializeField] public TileType tileBrush = TileType.empty;
 
     [SerializeField] private Vector2Int levelSize;
 
