@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
 
     public Vector2 direction;
-    [SerializeField] private float speed;
-    [SerializeField] private float halfSize;
+    [SerializeField] private float speed = 0f;
+    [SerializeField] private float halfSize = 0f;
 
 
     private void FixedUpdate()
@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
         {
 
             float collisionDistance = CollisionCheck(Vector3.up);
-            print(collisionDistance);
             if (collisionDistance < velocity.y)
                 velocity.y = collisionDistance;
         } else if (velocity.y < 0)
