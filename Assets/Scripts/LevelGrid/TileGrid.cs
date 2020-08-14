@@ -15,6 +15,7 @@ public enum TileType
     conveyorTurnLeft,
     conveyorTurnRight,
     finishTile,
+    playerStart,
 }
 
 
@@ -55,7 +56,8 @@ public class TileGrid : MonoBehaviour
             {TileType.conveyorDown, conveyorDown},
             {TileType.conveyorTurnLeft, conveyorTurnLeft},
             {TileType.conveyorTurnRight, conveyorTurnRight},
-            {TileType.finishTile, finishTile }
+            {TileType.finishTile, finishTile },
+            {TileType.playerStart, empty},
         };
 
         // initializing the tiles
@@ -66,6 +68,9 @@ public class TileGrid : MonoBehaviour
                 GameObject tile = tileDict[tilegrid[x, y]];
                 GameObject instantiatedTile = Instantiate(tile, new Vector3(x + 1, y + 1, 0), Quaternion.identity, transform);
                 tiles.Add(instantiatedTile.transform);
+
+                if (tilegrid[x, y] == TileType.playerStart)
+                    player.transform.position = new Vector3(x + 1, y + 1);
             }
     }
 

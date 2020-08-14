@@ -91,13 +91,15 @@ public class LevelEditor : Editor
                     case TileType.conveyorDown:
                     case TileType.conveyorLeft:
                     case TileType.conveyorRight:
-                        Handles.DrawSolidRectangleWithOutline(verts, Color.green, Color.black);
+                        Handles.DrawSolidRectangleWithOutline(verts, Color.blue, Color.black);
                         DrawConveyorArrow(tileGrid.tilegrid[x, y], new Vector2(x + 1, y + 1));
                         break;
                     case TileType.finishTile:
                         Handles.DrawSolidRectangleWithOutline(verts, Color.red, Color.black);
                         break;
-
+                    case TileType.playerStart:
+                        Handles.DrawSolidRectangleWithOutline(verts, Color.green, Color.black);
+                        break;
                 }
             }
 
