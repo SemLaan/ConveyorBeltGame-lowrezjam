@@ -94,6 +94,10 @@ public class LevelEditor : Editor
                         Handles.DrawSolidRectangleWithOutline(verts, Color.green, Color.black);
                         DrawConveyorArrow(tileGrid.tilegrid[x, y], new Vector2(x + 1, y + 1));
                         break;
+                    case TileType.finishTile:
+                        Handles.DrawSolidRectangleWithOutline(verts, Color.red, Color.black);
+                        break;
+
                 }
             }
 

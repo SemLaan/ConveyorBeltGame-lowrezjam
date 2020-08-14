@@ -14,6 +14,7 @@ public enum TileType
     conveyorDown,
     conveyorTurnLeft,
     conveyorTurnRight,
+    finishTile,
 }
 
 
@@ -32,14 +33,14 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private GameObject empty = null;
     [SerializeField] private GameObject wall = null,
                                         conveyorLeft = null, conveyorRight = null, conveyorUp = null, conveyorDown = null,
-                                        conveyorTurnLeft = null, conveyorTurnRight = null;
+                                        conveyorTurnLeft = null, conveyorTurnRight = null, finishTile = null;
 
     [HideInInspector] public bool pauseConveyorbelt = false;
 
     private Dictionary<TileType, GameObject> tileDict = null;
     private List<Transform> tiles = new List<Transform>();
-    
 
+    [SerializeField] public int levelNumber;
 
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class TileGrid : MonoBehaviour
             {TileType.conveyorDown, conveyorDown},
             {TileType.conveyorTurnLeft, conveyorTurnLeft},
             {TileType.conveyorTurnRight, conveyorTurnRight},
+            {TileType.finishTile, finishTile }
         };
 
         // initializing the tiles
