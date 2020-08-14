@@ -88,15 +88,11 @@ public class TileGrid : MonoBehaviour
             float closestTileDistance = float.PositiveInfinity;
             Transform closestTile = null;
 
-<<<<<<< HEAD
-            float distance = Vector2.Distance(tile.position, player.transform.position);
-            if (distance < closestTileDistance)
-=======
+
             foreach (Transform tile in tiles)
->>>>>>> feature/ConveyorbeltStop
             {
 
-                float distance = Vector2.Distance(tile.position, player.position);
+                float distance = Vector2.Distance(tile.position, player.transform.position);
                 if (distance < closestTileDistance)
                 {
 
