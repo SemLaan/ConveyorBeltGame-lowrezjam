@@ -78,12 +78,50 @@ public class LevelEditor : Editor
                     new Vector3(x + 1.5f, y + 1.5f),
                 };
 
-                if (tileGrid.tilegrid[x, y] == TileType.empty)
-                    Handles.DrawSolidRectangleWithOutline(verts, Color.grey, Color.grey);
-                else if (tileGrid.tilegrid[x, y] == TileType.wall)
-                    Handles.DrawSolidRectangleWithOutline(verts, Color.yellow, Color.yellow);
+                switch (tileGrid.tilegrid[x, y])
+                {
+
+                    case TileType.empty:
+                        Handles.DrawSolidRectangleWithOutline(verts, Color.grey, Color.black);
+                        break;
+                    case TileType.wall:
+                        Handles.DrawSolidRectangleWithOutline(verts, Color.yellow, Color.black);
+                        break;
+                    case TileType.conveyorUp:
+                    case TileType.conveyorDown:
+                    case TileType.conveyorLeft:
+                    case TileType.conveyorRight:
+                        Handles.DrawSolidRectangleWithOutline(verts, Color.green, Color.black);
+                        DrawConveyorArrow(tileGrid.tilegrid[x, y], new Vector2(x + 1, y + 1));
+                        break;
+                }
             }
 
         needsRepaint = false;
+    }
+
+    private void DrawConveyorArrow(TileType conveyorType, Vector2 tilePosition)
+    {
+
+        Vector3 direction = Vector3.zero;
+
+        switch (conveyorType)
+        {
+
+            case TileType.conveyorUp:
+                direction = Vector3.left * 90;
+                break;
+            case TileType.conveyorDown:
+                direction = Vector3.right * 90;
+                break;
+            case TileType.conveyorLeft:
+                direction = Vector3.down * 90;
+                break;
+            case TileType.conveyorRight:
+                direction = Vector3.up * 90;
+                break;
+        }
+
+        Handles.ArrowHandleCap(0, (Vector3) tilePosition + Vector3.back, Quaternion.Euler(direction), 0.45f, EventType.Repaint);
     }
 }
