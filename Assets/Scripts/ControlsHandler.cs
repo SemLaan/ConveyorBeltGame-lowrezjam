@@ -19,8 +19,5 @@ public class ControlsHandler : MonoBehaviour
         
         bool conveyorPaused = controls.Gameplay.ConveyorControl.ReadValue<float>() == 1;
         tileGrid.pauseConveyorbelt = conveyorPaused;
-        print(conveyorPaused);
-        print(tileGrid.pauseConveyorbelt);
     }
-
 }

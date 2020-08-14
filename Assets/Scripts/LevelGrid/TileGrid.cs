@@ -34,7 +34,7 @@ public class TileGrid : MonoBehaviour
                                         conveyorLeft = null, conveyorRight = null, conveyorUp = null, conveyorDown = null,
                                         conveyorTurnLeft = null, conveyorTurnRight = null;
 
-    [HideInInspector] public bool pauseConveyorbelt;
+    [HideInInspector] public bool pauseConveyorbelt = false;
 
     private Dictionary<TileType, GameObject> tileDict = null;
     private List<Transform> tiles = new List<Transform>();
@@ -72,7 +72,7 @@ public class TileGrid : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if(pauseConveyorbelt == true)
+        if(pauseConveyorbelt == false)
         {
             float closestTileDistance = float.PositiveInfinity;
             Transform closestTile = null;
