@@ -14,6 +14,7 @@ public enum TileType
     conveyorDown,
     conveyorTurnLeft,
     conveyorTurnRight,
+    playerStart,
 }
 
 
@@ -54,6 +55,7 @@ public class TileGrid : MonoBehaviour
             {TileType.conveyorDown, conveyorDown},
             {TileType.conveyorTurnLeft, conveyorTurnLeft},
             {TileType.conveyorTurnRight, conveyorTurnRight},
+            {TileType.playerStart, empty},
         };
 
         // initializing the tiles
