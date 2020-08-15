@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PauseLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""52b85fc4-26ab-4e2e-ada6-afead634d100"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""StartLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad324ce9-6068-4694-9559-cd44690ec213"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +86,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_ConveyorControl = m_Gameplay.FindAction("ConveyorControl", throwIfNotFound: true);
         m_Gameplay_StartLevel = m_Gameplay.FindAction("StartLevel", throwIfNotFound: true);
+        m_Gameplay_PauseLevel = m_Gameplay.FindAction("PauseLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +138,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_ConveyorControl;
     private readonly InputAction m_Gameplay_StartLevel;
+    private readonly InputAction m_Gameplay_PauseLevel;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ConveyorControl => m_Wrapper.m_Gameplay_ConveyorControl;
         public InputAction @StartLevel => m_Wrapper.m_Gameplay_StartLevel;
+        public InputAction @PauseLevel => m_Wrapper.m_Gameplay_PauseLevel;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +161,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @StartLevel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
                 @StartLevel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
                 @StartLevel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
+                @PauseLevel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseLevel;
+                @PauseLevel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseLevel;
+                @PauseLevel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseLevel;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +174,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @StartLevel.started += instance.OnStartLevel;
                 @StartLevel.performed += instance.OnStartLevel;
                 @StartLevel.canceled += instance.OnStartLevel;
+                @PauseLevel.started += instance.OnPauseLevel;
+                @PauseLevel.performed += instance.OnPauseLevel;
+                @PauseLevel.canceled += instance.OnPauseLevel;
             }
         }
     }
@@ -157,5 +185,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnConveyorControl(InputAction.CallbackContext context);
         void OnStartLevel(InputAction.CallbackContext context);
+        void OnPauseLevel(InputAction.CallbackContext context);
     }
 }
