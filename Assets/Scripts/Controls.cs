@@ -25,6 +25,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartLevel"",
+                    ""type"": ""Value"",
+                    ""id"": ""3d412216-5135-4af7-a809-d2a5317627f4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -38,6 +46,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""ConveyorControl"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""986ba97d-6cf0-4604-ac91-df8f8426f772"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -47,6 +66,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_ConveyorControl = m_Gameplay.FindAction("ConveyorControl", throwIfNotFound: true);
+        m_Gameplay_StartLevel = m_Gameplay.FindAction("StartLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -97,11 +117,13 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_ConveyorControl;
+    private readonly InputAction m_Gameplay_StartLevel;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ConveyorControl => m_Wrapper.m_Gameplay_ConveyorControl;
+        public InputAction @StartLevel => m_Wrapper.m_Gameplay_StartLevel;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -114,6 +136,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @ConveyorControl.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnConveyorControl;
                 @ConveyorControl.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnConveyorControl;
                 @ConveyorControl.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnConveyorControl;
+                @StartLevel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
+                @StartLevel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
+                @StartLevel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -121,6 +146,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @ConveyorControl.started += instance.OnConveyorControl;
                 @ConveyorControl.performed += instance.OnConveyorControl;
                 @ConveyorControl.canceled += instance.OnConveyorControl;
+                @StartLevel.started += instance.OnStartLevel;
+                @StartLevel.performed += instance.OnStartLevel;
+                @StartLevel.canceled += instance.OnStartLevel;
             }
         }
     }
@@ -128,5 +156,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnConveyorControl(InputAction.CallbackContext context);
+        void OnStartLevel(InputAction.CallbackContext context);
     }
 }

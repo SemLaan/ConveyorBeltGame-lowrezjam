@@ -8,12 +8,15 @@ public class Player : MonoBehaviour
     public Vector2 direction;
     [SerializeField] private float speed = 0f;
     [SerializeField] private float halfSize = 0f;
+    public bool gameStart = false;
 
 
     private void FixedUpdate()
     {
-
-        Move(direction * speed * Time.deltaTime);
+        if (gameStart)
+        {
+            Move(direction * speed * Time.deltaTime);
+        }
     }
 
 
