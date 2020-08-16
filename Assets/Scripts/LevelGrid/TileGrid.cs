@@ -66,7 +66,7 @@ public class TileGrid : MonoBehaviour
             {
 
                 GameObject tile = tileDict[tilegrid[x, y]];
-                GameObject instantiatedTile = Instantiate(tile, new Vector3(x + 1, y + 1, 0), Quaternion.identity, transform);
+                GameObject instantiatedTile = Instantiate(tile, new Vector3(x + 1, y + 1, 0), tile.transform.rotation, transform);
                 tiles.Add(instantiatedTile.transform);
 
                 if (tilegrid[x, y] == TileType.playerStart)
