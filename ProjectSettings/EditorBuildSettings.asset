@@ -5,10 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimoScene.unity
     guid: 1763273a16d15904cb46f8c9735b6ae8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SemScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f276375a5504ce6439eedc5e533b0eea
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: d30188e64a580434e96afc34ebedf247
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 494d3e296f05b0e46a0c1459c65e2c64
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: 6795e30b50933ce4887c9b3e2e3f0c6b
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 4847efa8ef710664f915893732f98e83
   m_configObjects: {}
