@@ -25,6 +25,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5fd8611-87fc-43b9-a829-946ac63418d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""76f719c9-0790-452c-aa9b-6fcf2eaf648b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -38,6 +54,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""ConveyorControl"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""002f8b4c-a507-48b7-9931-a69acf689931"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1bdacef-cbf6-41ba-bbfb-9eaf675df3ea"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -47,6 +85,8 @@ public class @Controls : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_ConveyorControl = m_Gameplay.FindAction("ConveyorControl", throwIfNotFound: true);
+        m_Gameplay_Up = m_Gameplay.FindAction("Up", throwIfNotFound: true);
+        m_Gameplay_Down = m_Gameplay.FindAction("Down", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -97,11 +137,15 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_ConveyorControl;
+    private readonly InputAction m_Gameplay_Up;
+    private readonly InputAction m_Gameplay_Down;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ConveyorControl => m_Wrapper.m_Gameplay_ConveyorControl;
+        public InputAction @Up => m_Wrapper.m_Gameplay_Up;
+        public InputAction @Down => m_Wrapper.m_Gameplay_Down;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -114,6 +158,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @ConveyorControl.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnConveyorControl;
                 @ConveyorControl.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnConveyorControl;
                 @ConveyorControl.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnConveyorControl;
+                @Up.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -121,6 +171,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @ConveyorControl.started += instance.OnConveyorControl;
                 @ConveyorControl.performed += instance.OnConveyorControl;
                 @ConveyorControl.canceled += instance.OnConveyorControl;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
             }
         }
     }
@@ -128,5 +184,7 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnConveyorControl(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
     }
 }
