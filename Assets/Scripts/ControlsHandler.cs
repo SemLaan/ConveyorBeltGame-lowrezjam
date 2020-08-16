@@ -9,6 +9,7 @@ public class ControlsHandler : MonoBehaviour
 
     private void Awake()
     {
+
         controls = new Controls();
         controls.Enable();
         tileGrid = FindObjectOfType<TileGrid>();

@@ -18,6 +18,14 @@
                     "type": "Value",
                     "id": "3d412216-5135-4af7-a809-d2a5317627f4",
                     "expectedControlType": "",
+    		    "processors": "",
+                    "interactions": ""
+                },
+		{
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "a5fd8611-87fc-43b9-a829-946ac63418d2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -25,6 +33,14 @@
                     "name": "PauseLevel",
                     "type": "Button",
                     "id": "52b85fc4-26ab-4e2e-ada6-afead634d100",
+		    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+		},
+		{
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "76f719c9-0790-452c-aa9b-6fcf2eaf648b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -50,6 +66,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "StartLevel",
+		    "isComposite": false,
+                    "isPartOfComposite": false
+		    },
+                    {
+                    "name": "",
+                    "id": "002f8b4c-a507-48b7-9931-a69acf689931",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -61,6 +88,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseLevel",
+		    "isComposite": false,
+                    "isPartOfComposite": false
+		    },
+                    {
+		    "name": "",
+                    "id": "b1bdacef-cbf6-41ba-bbfb-9eaf675df3ea",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

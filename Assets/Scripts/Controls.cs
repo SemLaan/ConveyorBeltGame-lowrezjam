@@ -35,9 +35,25 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5fd8611-87fc-43b9-a829-946ac63418d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""PauseLevel"",
                     ""type"": ""Button"",
                     ""id"": ""52b85fc4-26ab-4e2e-ada6-afead634d100"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""76f719c9-0790-452c-aa9b-6fcf2eaf648b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -68,12 +84,34 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""002f8b4c-a507-48b7-9931-a69acf689931"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ad324ce9-6068-4694-9559-cd44690ec213"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1bdacef-cbf6-41ba-bbfb-9eaf675df3ea"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -86,7 +124,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_ConveyorControl = m_Gameplay.FindAction("ConveyorControl", throwIfNotFound: true);
         m_Gameplay_StartLevel = m_Gameplay.FindAction("StartLevel", throwIfNotFound: true);
+        m_Gameplay_Up = m_Gameplay.FindAction("Up", throwIfNotFound: true);
         m_Gameplay_PauseLevel = m_Gameplay.FindAction("PauseLevel", throwIfNotFound: true);
+        m_Gameplay_Down = m_Gameplay.FindAction("Down", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -138,14 +178,18 @@ public class @Controls : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_ConveyorControl;
     private readonly InputAction m_Gameplay_StartLevel;
+    private readonly InputAction m_Gameplay_Up;
     private readonly InputAction m_Gameplay_PauseLevel;
+    private readonly InputAction m_Gameplay_Down;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ConveyorControl => m_Wrapper.m_Gameplay_ConveyorControl;
         public InputAction @StartLevel => m_Wrapper.m_Gameplay_StartLevel;
+        public InputAction @Up => m_Wrapper.m_Gameplay_Up;
         public InputAction @PauseLevel => m_Wrapper.m_Gameplay_PauseLevel;
+        public InputAction @Down => m_Wrapper.m_Gameplay_Down;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -161,9 +205,15 @@ public class @Controls : IInputActionCollection, IDisposable
                 @StartLevel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
                 @StartLevel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
                 @StartLevel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartLevel;
+                @Up.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
                 @PauseLevel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseLevel;
                 @PauseLevel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseLevel;
                 @PauseLevel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseLevel;
+                @Down.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -174,9 +224,15 @@ public class @Controls : IInputActionCollection, IDisposable
                 @StartLevel.started += instance.OnStartLevel;
                 @StartLevel.performed += instance.OnStartLevel;
                 @StartLevel.canceled += instance.OnStartLevel;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
                 @PauseLevel.started += instance.OnPauseLevel;
                 @PauseLevel.performed += instance.OnPauseLevel;
                 @PauseLevel.canceled += instance.OnPauseLevel;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
             }
         }
     }
@@ -185,6 +241,8 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnConveyorControl(InputAction.CallbackContext context);
         void OnStartLevel(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
         void OnPauseLevel(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
     }
 }
